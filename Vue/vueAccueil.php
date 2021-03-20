@@ -1,12 +1,13 @@
-<?php $titre="Mokytis";?>
+<?php
+$titre="Mokytis";
 
-<?php ob_start(); ?>
-<?php for(var i=0; i<3; i++){
+ob_start();
+
+for($i=0; $i<3; $i++){
 	echo "<article>";
 	echo "Cours " . $i . "<br><p>Blblbllblblblbldblsdfljksdflkjsdlfkjslfkjsdlkjsdlkfjqkjnekljfvnkjnvoskljncozlskdcolzkicolziknc,d</p>";
 	echo "</article>";
+}
+$contenu=ob_get_clean();
+require 'template.php';
 ?>
-<?php $contenu=ob_get_clean(); ?>
-
-<?php require 'template.php'; ?>
-
