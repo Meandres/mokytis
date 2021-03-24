@@ -2,12 +2,7 @@
 $titre="Mokytis";
 
 ob_start();
-
-for($i=0; $i<3; $i++){
-	echo "<article>";
-	echo "Cours " . $i . "<br><p>Blblbllblblblbldblsdfljksdflkjsdlfkjslfkjsdlkjsdlkfjqkjnekljfvnkjnvoskljncozlskdcolzkicolziknc,d</p>";
-	echo "</article>";
-}
+echo '<p><a href="Controleur/perso.php">Pages Perso</a></p>';
 $contenu=ob_get_clean();
 require 'template.php';
 ?>
