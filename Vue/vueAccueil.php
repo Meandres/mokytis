@@ -37,5 +37,5 @@ fdjklsjlsd
 
 
 $contenu=ob_get_clean();
-require 'template.php';
+require 'templateMain.php';
 ?>

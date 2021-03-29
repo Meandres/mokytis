@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8"/>
-	<link rel="stylesheet" href="../Style/orangeIsTheNewBlack.css" media="screen">
+	<link rel="stylesheet" href="Style/orangeIsTheNewBlack.css" media="screen">
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<title><?php $titre ?></title>
@@ -13,9 +13,9 @@
 		<h1> LOGO </h1>
 		<div id="header">
 		  <nav>
-		    <a href="../index.php">Accueil</a>
+		    <a href="index.php">Accueil</a>
 		    <a href="#">Forum</a>
-		    <a href="perso.php">Mon profil</a>
+		    <a href="Controleur/perso.php">Mon profil</a>
 				<button type="button" name="button" id="profil"> profil</button>
 		  </nav>
 		</div>
@@ -38,14 +38,14 @@
 			<option value="NeoBlue">Neo Blue</option>
 		</select><br/><br/><br/>
 		<span class="footer_links" style="padding-bottom: 20px;">
-			<a href="nousContacter.php">Nous contacter</a>
-		  	<a href="politiqueViePrivee.php">Politique de protection de la vie privée</a>
-		  	<a href="mentionsLegales.php">Conditions et mentions Légales</a>
+			<a href="Controleur/nousContacter.php">Nous contacter</a>
+		  	<a href="Controleur/politiqueViePrivee.php">Politique de protection de la vie privée</a>
+		  	<a href="Controleur/mentionsLegales.php">Conditions et mentions Légales</a>
 		  </span>
 		</p>
 		</div>
 	</footer>
 	</div>
 </body>
-<script src="../Javascript/javascript.js"></script>
+<script src="Javascript/javascript.js"></script>
 </html>
