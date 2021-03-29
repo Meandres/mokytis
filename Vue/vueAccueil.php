@@ -4,7 +4,7 @@ $titre="Mokytis";
 ob_start();
 ?>
 <div class="imgBox">
-	<img class="center-fit" src="Ressources/imagePresentation.png" alt="">
+	<img class="center-fit" src="../Ressources/imagePresentation.png" alt="">
 	<div class="encardrement">
 		<h3> Mokytis </h3>
 		<p> Apprendre les cours en ligne, blabliblou c'est cool la vie et les sushis aussi </p>
