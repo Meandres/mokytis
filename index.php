@@ -1,5 +1,5 @@
 <?php
-require("ControllerThomas/controller.php");
+require("Controleur/controller.php");
 
 if (isset($_GET['action'])){
 	if($_GET['action']== "accueil"){
