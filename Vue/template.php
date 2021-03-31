@@ -22,7 +22,7 @@
 	</header>
 	<div id="profilContainer">
 		<ul>
-			<li>option</li>
+			<li><a href="index.php"></li>
 			<li>test1</li>
 			<li>test1</li>
 		</ul>
