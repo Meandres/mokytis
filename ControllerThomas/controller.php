@@ -13,7 +13,7 @@ function profil(){
     //$user.commitChanges();
   }
   else{
-    $user=Apprenant::avecParams(1, "Mikoto", "Misaka", "railgun", "toma");
+    $user=Apprenant::avecParams(1, "Misaka", "Mikoto", "railgun", "toma");
   }
   require('Vue/vuePerso.php');
 }
