@@ -1,11 +1,3 @@
-<?php
-if(isset($_GET[""])){
-
-}
-
-
-
- ?>
 
 <!doctype html>
 <html lang="fr">
@@ -31,7 +23,14 @@ if(isset($_GET[""])){
 	</header>
 	<div id="profilContainer">
 		<ul>
-			<li><a href="index.php">Connecter</a></li>
+			<?php
+      if (isset($_SESSION["newsession"])) {
+        echo "<li><a href='index.php?action=login'>Déconnexion</a></li>";
+      }else{
+
+        echo "<li><a href='index.php?action=login'>Connecter</a></li>";
+      }
+       ?>
 			<li>test1</li>
 			<li>test1</li>
 			<li>cjsk</li>
