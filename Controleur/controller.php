@@ -9,12 +9,15 @@ function accueil()
     require('Vue/vueAccueil.php');
 }
 function profil(){
+  $id=4;
   if($_POST){
-    $user=Apprenant::avecParams($_POST["identifiant"], $_POST['nom'], $_POST['prenom'], $_POST['login'], $_POST['mdp']);
-    //$user.commitChanges();
+    $user=getApprenant($id);
+    $user->modifChamps($_POST['nom'], $_POST['prenom'], $_POST['login'], $_POST['mdp']);
+    modifBaseApprenant($user);
+    //commit();
   }
   else{
-    $user=Apprenant::avecParams(1, "Mikoto", "Misaka", "railgun", "toma");
+    $user=getApprenant($id);
   }
   require('Vue/vuePerso.php');
 }

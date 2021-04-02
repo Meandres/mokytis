@@ -2,10 +2,10 @@
 date_default_timezone_set('CET');
 
 class Apprenant{
-  private $id, $nom, $prenom, $login, $mdp, $dateInscription, $dateDerniereConnexion;
+  private $idAppr, $nom, $prenom, $login, $mdp, $dateInscription, $dateDerniereConnexion;
 
   public function getId(){
-    return $this->id;
+    return $this->idAppr;
   }
   public function getNom(){
     return $this->nom;
@@ -46,11 +46,17 @@ class Apprenant{
   public function setDateDerniereConnexion($date){
     $this->dateDerniereConnexion=$date;
   }
+  public function modifChamps($Nom, $Prenom, $Login, $Mdp){
+    $this->nom=$Nom;
+    $this->prenom=$Prenom;
+    $this->login=$Login;
+    $this->mdp=$Mdp;
+  }
   //constructeur par défault (peut-être à enlever ?)
   public function __construct(){}
   //constructeur pour une requete dans la base
   protected function remplirBD(array $row){
-    $this->id=$row['id'];
+    $this->idAppr=$row['idAppr'];
     $this->nom=$row['nom'];
     $this->prenom=$row['prenom'];
     $this->login=$row['login'];
@@ -59,14 +65,14 @@ class Apprenant{
     $this->dateDerniereConnexion=$row['dateDerniereConnexion'];
   }
   //constructeur pour la création de compte
-  protected function remplirParam($Id, $Nom, $Prenom, $Login, $Mdp){
-    $this->id=$Id;
+  protected function remplirParam($Id, $Nom, $Prenom, $Login, $Mdp, $dateI, $dateDC){
+    $this->idAppr=$Id;
     $this->nom=$Nom;
     $this->prenom=$Prenom;
     $this->login=$Login;
     $this->mdp=$Mdp;
-    $this->dateInscription=date("Y-m-d H:i:s");
-    $this->dateDerniereConnexion=date("Y-m-d H:i:s");
+    $this->dateInscription=$dateI;
+    $this->dateDerniereConnexion=$dateDC;
   }
   //fabrique de classe (à partir d'une requete à la base)
   public static function avecBD(array $row){
@@ -74,10 +80,16 @@ class Apprenant{
     $instance->remplirBD($row);
     return $instance;
   }
-  //fabrique de classe (à partir de paramètres)
-  public static function avecParams($Id, $Nom, $Prenom, $Login, $Mdp){
+  //fabrique de classe (pour la creation de compte)
+  public static function creeCompte($Id, $Nom, $Prenom, $Login, $Mdp){
     $instance=new self();
-    $instance->remplirParam($Id, $Nom, $Prenom, $Login, $Mdp);
+    $instance->remplirParam($Id, $Nom, $Prenom, $Login, $Mdp, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
+    return $instance;
+  }
+  //fabrique de classe (pour le clonage)
+  public static function avecModele($Id, $Nom, $Prenom, $Login, $Mdp, $dateI, $dateDC){
+    $instance=new self();
+    $instance->remplirParam($Id, $Nom, $Prenom, $Login, $Mdp, $dateI, $dateDC);
     return $instance;
   }
 }

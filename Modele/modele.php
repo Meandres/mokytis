@@ -12,7 +12,7 @@ Sortie : objet PDO
 */
 function ouvrirConnexion(){
   try{
-      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', $dbLogin, $dbMdp);
+      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', "root", "root");
       return $dbConn;
   }catch(PDOException $e){
     print "Erreur !: ".$e->getMessage() ."<br/>";
@@ -47,13 +47,18 @@ Fonction permettant de récuperer les informations d'un apprenant
 Entrée : ID de l'apprenant
 Sortie : Objet instanciée depuis Apprenant()
 */
-function getApprennant($id){
+function getApprenant($id){
   $dbConn=ouvrirConnexion();
-  $requete="select * from apprenants where id=".$id;
-  $records=query($dbConn, $requete);
-  $ap=Apprenant::avecBD($records.fetch());
-  var_dump($ap);
+  $requete="select * from APPRENANT where idAppr=".$id.";";
+  $records=$dbConn->query($requete);
+  $ap=Apprenant::avecBD($records->fetch());
   return $ap;
+}
+
+function modifBaseApprenant($user){
+  $dbConn=ouvrirConnexion();
+  $requete="update APPRENANT set nom=\"".$user->getNom()."\", prenom=\"".$user->getPrenom()."\", login=\"".$user->getLogin()."\", mdp=\"".$user->getMdp(). "\" where idAppr=".$user->getId().";";
+  $dbConn->prepare($requete)->execute();
 }
 
 

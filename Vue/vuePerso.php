@@ -9,9 +9,6 @@ ob_start();
 ?>
 
 <form id="formApprenant" action="index.php?action=profil" method="post">
-  <label for="identifiant">Id :</label>
-  <input type="text" id="identifiant" name="identifiant" value="<?php echo $user->getId(); ?>" disabled><br/><br/><br/>
-
   <label for="prenom">Prenom : </label>
   <input type="text" id="prenom" name="prenom" value="<?php echo $user->getPrenom(); ?>" disabled>
 

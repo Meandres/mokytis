@@ -42,7 +42,7 @@ CREATE TABLE APPRENANT(
   mdp VARCHAR(20),
   actif BOOL DEFAULT FALSE,
   dateInscription DATE,
-  dateDerniereCo Date
+  dateDerniereConnexion DATE
   );
 
 CREATE TABLE SUIT(
@@ -135,6 +135,7 @@ INSERT INTO PROFESSEUR VALUES (3, "Gentil", "Christian", "genchris", "chrisgen")
 INSERT INTO APPRENANT VALUES (1, "Girard", "Quentin", "girquen", "quengir", true, CURRENT_DATE(), CURRENT_DATE());
 INSERT INTO APPRENANT VALUES (2, "Girard", "Henry", "girhen", "hengir", true, CURRENT_DATE(), CURRENT_DATE());
 INSERT INTO APPRENANT VALUES (3, "Desbois", "Nicolas", "desnic", "nicdes", true, CURRENT_DATE(), CURRENT_DATE());
+INSERT INTO APPRENANT VALUES (4, "Misaka", "Mikoto", "railgun", "toma", true, CURRENT_DATE(), CURRENT_DATE());
 
 INSERT INTO COURS VALUES (11, "identites remarquables", 2, true, CURRENT_DATE(), 8);
 INSERT INTO COURS VALUES (12, "polygones", 1, false, CURRENT_DATE(), 4);
