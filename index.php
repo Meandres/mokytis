@@ -20,9 +20,6 @@ if (isset($_GET['action'])){
 	else if($_GET['action']== "login"){
 		login();
 	}
-
-
-
 } else {
 	accueil();
 }

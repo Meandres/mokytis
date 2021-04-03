@@ -10,9 +10,10 @@ Fonction réalisant l'ouverture de la connection à la base de données.
 Entrée : paramètres de connection contenus dans le fichier conf.php
 Sortie : objet PDO
 */
+
 function ouvrirConnexion(){
   try{
-      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', "root", "root");
+      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', $dbLogin, $dbMdp);
       return $dbConn;
   }catch(PDOException $e){
     print "Erreur !: ".$e->getMessage() ."<br/>";
@@ -54,6 +55,14 @@ function getApprenant($id){
   $ap=Apprenant::avecBD($records->fetch());
   return $ap;
 }
+
+function getIdAppr($username, $password){
+  $dbConn=ouvrirConnexion();
+  $requete="select idAppr from APPRENANT where login=".$username." and mdp=".$password.";";
+  $id=$dbConn->query($requete)->fetch();
+  return $id;
+}
+
 
 function modifBaseApprenant($user){
   $dbConn=ouvrirConnexion();

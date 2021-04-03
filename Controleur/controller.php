@@ -40,18 +40,14 @@ function login(){
       $lm = new LoginManager();
       $test = $lm->loginUser($_POST["username"],$_POST["password"]);
       if($test == true){
-          echo"<p>connecté<p>";
           header('Location: index.php?action=accueil');
       }else{
-        echo"<p>mot de passe ou login incorrect<p>";
-        echo $_POST["username"]."mp".$_POST["password"];
         require("Vue/login.php");
       }
     }else{
       require("Vue/login.php");
     }
   }else{
-    echo"<p>deco<p>";
     unset($_SESSION["newsession"]);
     header('Location: index.php?action=accueil');
   }
