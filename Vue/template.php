@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="Style/orangeIsTheNewBlack.css" media="screen">
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<title><?php $titre ?></title>
 </head>
 <body>
@@ -24,16 +25,20 @@
 	<div id="profilContainer">
 		<ul>
 			<?php
+			/* Si l'utilisateur est connecté on affiche un lien Déconnecter sinon
+			on affiche un lien Connexion
+			*/
       if (isset($_SESSION["newsession"])) {
         echo "<li><a href='index.php?action=login'>Déconnexion</a></li>";
       }else{
 
-        echo "<li><a href='index.php?action=login'>Connecter</a></li>";
+        echo "<li><a href='index.php?action=login'>Connexion</a></li>";
       }
        ?>
 			<li>test1</li>
-			<li>test1</li>
+			<li>teskst1</li>
 			<li>cjsk</li>
+			<li>fd</li>
 		</ul>
 	</div>
 	<div id="contenu">
@@ -57,4 +62,6 @@
 	</div>
 </body>
 <script src="Javascript/javascript.js"></script>
+
+
 </html>
