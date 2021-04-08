@@ -26,8 +26,15 @@ Blabmalbalbalbla
 </table>
 
 <h1>Nos derniers cours</h1>
+<div class="lastCours">
+	<?php
+	foreach ($tabCours as $key => $cours) {
+		echo $cours->afficherApperçu();
+	}
+?>
+</div>
 
-fdjklsjlsd
+
 
 <h1>nos meilleures topic </h1>
 

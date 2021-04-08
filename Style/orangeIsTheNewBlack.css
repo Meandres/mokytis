@@ -246,6 +246,16 @@ nav > a {
   font-size: 200%;
 
 }
+.appercuCours{
+  background-color: blue;
+  display: inline-block;
+  width: auto;
+  padding: 20px;
+  margin: 5px;
+}
+.lastCours{
+
+}
 
 
 

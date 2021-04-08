@@ -2,10 +2,13 @@
 
 require('Modele/modele.php');
 require('Modele/LoginManager.php');
+require('Modele/Cours.php');
 
 function accueil()
 {
     // la tu fais les appelles au fonction du modele
+    $tabCours = getLastCours();
+    //var_dump($tabCours);
     require('Vue/vueAccueil.php');
 }
 function profil(){

@@ -13,7 +13,7 @@ Sortie : objet PDO
 
 function ouvrirConnexion(){
   try{
-      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', $dbLogin, $dbMdp);
+      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', "root", "root");
       return $dbConn;
   }catch(PDOException $e){
     print "Erreur !: ".$e->getMessage() ."<br/>";
@@ -68,6 +68,19 @@ function modifBaseApprenant($user){
   $dbConn=ouvrirConnexion();
   $requete="update APPRENANT set nom=\"".$user->getNom()."\", prenom=\"".$user->getPrenom()."\", login=\"".$user->getLogin()."\", mdp=\"".$user->getMdp(). "\" where idAppr=".$user->getId().";";
   $dbConn->prepare($requete)->execute();
+}
+
+// cours
+
+function getLastCours(){
+  $dbConn = ouvrirConnexion();
+  $requete="select * from COURS;";
+  $lesCours=$dbConn->query($requete)->fetchAll();
+  $tabCours = [];
+  foreach ($lesCours as $key => $cours) {
+    $tabCours[] = Cours::avecBD($cours);
+  }
+  return $tabCours;
 }
 
 
