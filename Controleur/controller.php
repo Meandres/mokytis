@@ -35,6 +35,15 @@ function politique(){
 function mentionsLegales(){
   require("Vue/vueMentionsLegales.php");
 }
+function listeCours(){
+  $listeCours = getAllCours();
+  require("Vue/vueListeCours.php");
+}
+function coursDetails($id){
+  $cours = getCoursId($id);
+
+  require("Vue/vueCoursDetails.php");
+}
 
 // Connexion de l'utilisateur
 function login(){

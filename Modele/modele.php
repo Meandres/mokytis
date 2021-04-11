@@ -74,7 +74,7 @@ function modifBaseApprenant($user){
 
 function getLastCours(){
   $dbConn = ouvrirConnexion();
-  $requete="select * from COURS;";
+  $requete="select * from COURS order by dateAjout DESC limit 5;";
   $lesCours=$dbConn->query($requete)->fetchAll();
   $tabCours = [];
   foreach ($lesCours as $key => $cours) {
@@ -82,6 +82,24 @@ function getLastCours(){
   }
   return $tabCours;
 }
+function getAllCours(){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from COURS;";
+  $lesCours=$dbConn->query($requete)->fetchAll();
+  $tabCours = [];
+  foreach ($lesCours as $key => $cours) {
+    $tabCours[] = Cours::avecBD($cours);
+  }
+  return $tabCours;
+}
+function getCoursId($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from COURS where idCours=".$id.";";
+  $cours1 = $dbConn->query($requete)->fetch();
+  $cours = Cours::avecBD($cours1);
+  return $cours;
+}
 
 
- ?>
+
+?>
