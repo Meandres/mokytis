@@ -34,12 +34,21 @@ function politique(){
 function mentionsLegales(){
   require("Vue/vueMentionsLegales.php");
 }
+function listeCours(){
+  $listeCours = getAllCours();
+  require("Vue/vueListeCours.php");
+}
+function coursDetails($id){
+  $cours = getCoursId($id);
+
+  require("Vue/vueCoursDetails.php");
+}
 
 function ajoutModifCours(){
   if(isset($_GET['modif'])){
     modifBaseCours($_GET['idCours'], $_POST['intituleCours'], $_POST['dureeEstimee'], $_POST['contenu']);
   }
-  $cours=getCours($_GET['idCours']);
+  $cours=getCoursSimplesId($_GET['idCours']);
   require("Vue/vueAjoutModifCours.php");
 }
 

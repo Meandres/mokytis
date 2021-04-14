@@ -64,7 +64,7 @@ function modifBaseApprenant($user){
 
 function getLastCours(){
   $dbConn = ouvrirConnexion();
-  $requete="select * from COURS;";
+  $requete="select * from COURS order by dateAjout DESC limit 5;";
   $lesCours=$dbConn->query($requete)->fetchAll();
   $tabCours = [];
   foreach ($lesCours as $key => $cours) {
@@ -72,16 +72,28 @@ function getLastCours(){
   }
   return $tabCours;
 }
-/*
-Fonction permettant de récuperer les informations d'un cours (en se servant de COURSSIMPLES pour le moment)
-Entrée : ID du cours
-Sortie : Objet instanciée depuis Cours()
-*/
-function getCours($id){
-  $dbConn=ouvrirConnexion();
-  $requete="select * from COURSSIMPLES where idCours=".$id.";";
-  $res=$dbConn->query($requete);
-  $cours=Cours::avecBDSimple($res->fetch());
+function getAllCours(){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from COURS;";
+  $lesCours=$dbConn->query($requete)->fetchAll();
+  $tabCours = [];
+  foreach ($lesCours as $key => $cours) {
+    $tabCours[] = Cours::avecBD($cours);
+  }
+  return $tabCours;
+}
+function getCoursId($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from COURS where idCours=".$id.";";
+  $cours1 = $dbConn->query($requete)->fetch();
+  $cours = Cours::avecBD($cours1);
+  return $cours;
+}
+function getCoursSimplesId($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from COURSSIMPLES where idCours=".$id.";";
+  $cours1 = $dbConn->query($requete)->fetch();
+  $cours = Cours::avecBDSimple($cours1);
   return $cours;
 }
 function modifBaseCours($id, $intitule, $duree, $contenu){
@@ -91,4 +103,4 @@ function modifBaseCours($id, $intitule, $duree, $contenu){
 }
 
 
- ?>
+?>
