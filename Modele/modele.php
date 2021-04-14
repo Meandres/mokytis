@@ -33,15 +33,19 @@ function getApprenant($id){
   return $ap;
 }
 
-function verifCredentials($username, $password){
+function verifCredentialsApprenant($username, $password){
   $dbConn=ouvrirConnexion();
   $requeteAp="select mdp from APPRENANT where login=\"".$username."\";";
-  $requetePr="select mdp from PROFESSEUR where login=\"".$username."\";";
   $records=$dbConn->query($requeteAp);
   $passAp=$records->fetch();
+  return ($passAp!=false);
+}
+function verifCredentialsProf($username, $password){
+  $dbConn=ouvrirConnexion();
+  $requetePr="select mdp from PROFESSEUR where login=\"".$username."\";";
   $records=$dbConn->query($requetePr);
   $passPr=$records->fetch();
-  return ($passAp || $passPr);
+  return ($passPr!=false);
 }
 
 function getIdAppr($username, $password){

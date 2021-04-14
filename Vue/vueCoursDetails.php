@@ -21,9 +21,19 @@ ob_start();
     Vestibulum malesuada lectus est. Quisque dolor tortor, aliquam at faucibus non, dignissim rutrum metus. Praesent ornare massa vitae risus tempor dictum. Vivamus sit amet hendrerit nisi. Praesent a interdum ligula, quis vulputate quam. Etiam dapibus consectetur urna, vel hendrerit nisl fringilla sit amet. Nulla venenatis nibh lectus, at viverra leo malesuada non. Ut eleifend quam id nunc suscipit elementum. Praesent quis blandit lacus.
     </div>
     <div class="container-button">
-        <button type="button" name="button"> Faire le test</button>
+        <?php
+        if(isset($_SESSION['prof'])){?>
+          <a href="index.php?action=ajoutModifCours&idCours=<?php echo $cours->getIdCours();?>">
+           <button id="bModif" name="buttonModif">Modifier le cours</button>
+         </a>
+       <?php }else{ ?>
+          <a href="index.php?action=coursDetails&idCours="<?php echo $cours->getIdCours();?>>
+            <button id="bQCM" name="buttonQCM"> Faire le test</button>
+          </a>
+        <?php
+        }
+       ?>
     </div>
-
 </div>
 <?php
 $contenu=ob_get_clean();
