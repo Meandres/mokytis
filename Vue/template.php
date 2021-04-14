@@ -12,7 +12,7 @@
 <body>
 	<div id="global">
 	<header>
-		<h1> LOGO </h1>
+		<h1><img src="Ressources/logo.jpeg" alt="Logo" width="50" height="50"> Mokytis</h1>
 		<div id="header">
 		  <nav>
 		    <a href="index.php?action=accueil">Accueil</a>

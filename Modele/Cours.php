@@ -3,7 +3,7 @@ date_default_timezone_set('CET');
 
 //Création de la classe cours
 class Cours{
-	private $idCours, $intituleCours, $professeur, $accepte, $dateAjout, $dureeEstimee;
+	private $idCours, $intituleCours, $professeur, $accepte, $dateAjout, $dureeEstimee, $contenu;
 
 	//get
 	public function getIdCours(){
@@ -28,6 +28,9 @@ class Cours{
 
 	public function getDureeEstimee(){
 		return $this->dureeEstimee;
+	}
+	public function getContenu(){
+		return $this->contenu;
 	}
 
 	//set
@@ -54,6 +57,9 @@ class Cours{
 	public function setDureeEstimee($Duree){
 		$this->dureeEstimee=$Duree;
 	}
+	public function setContenu($contenu){
+		$this->contenu=$contenu;
+	}
 
 	//constructeur par défault (peut-être à enlever ?)
 	public function __construct(){}
@@ -66,6 +72,15 @@ class Cours{
 		$this->accepte=$row['accepte'];
 		$this->dateAjout=$row['dateAjout'];
 		$this->dureeEstimee=$row['dureeEstimee'];
+	}
+	protected function remplirBDSimple(array $row){
+		$this->idCours=$row['idCours'];
+		$this->intituleCours=$row['intituleCours'];
+		$this->professeur=$row['professeur'];
+		$this->accepte=$row['accepte'];
+		$this->dateAjout=$row['dateAjout'];
+		$this->dureeEstimee=$row['dureeEstimee'];
+		$this->contenu=$row['contenu'];
 	}
 
 	//constructeur pour la création de compte
@@ -87,6 +102,11 @@ class Cours{
 	public static function avecBD(array $row){
 		$instance=new self();
 		$instance->remplirBD($row);
+		return $instance;
+	}
+	public static function avecBDSimple(array $row){
+		$instance=new self();
+		$instance->remplirBDSimple($row);
 		return $instance;
 	}
 

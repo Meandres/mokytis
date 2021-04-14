@@ -9,7 +9,7 @@ ob_start();
   <input type="text" name="username" value="">
   <label for="password"></label>
   <input type="text" name="password" value="">
-  <button type="submit" name="button" >Appliquer</button>
+  <button type="submit" name="button" >Se Connecter</button>
 </form>
 
 <?php

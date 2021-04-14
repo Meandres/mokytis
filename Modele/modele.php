@@ -21,29 +21,6 @@ function ouvrirConnexion(){
   }
 }
 /*
-PDO::exec() mais avec la gestion d'erreur en plus
-*/
-function execute($dbConn, $requete){
-  try{
-    $res=$dbConn->exec($requete);
-    return $res;
-  }catch (PDOException $e){
-    echo "Erreur !: ".$e->getMessage()."<br/>";
-    return null;
-  }
-}
-/*
-PDO::query() mais avec la gestion d'erreur en plus
-*/
-function query($dbConn, $requete){
-  try{
-    $res=$dbConn->query($requete);
-  }catch(PDOException $e){
-    echo "Erreur !; ".$e->getMessage()."<br/>";
-    return null;
-  }
-}
-/*
 Fonction permettant de récuperer les informations d'un apprenant
 Entrée : ID de l'apprenant
 Sortie : Objet instanciée depuis Apprenant()
@@ -56,14 +33,27 @@ function getApprenant($id){
   return $ap;
 }
 
+function verifCredentials($username, $password){
+  $dbConn=ouvrirConnexion();
+  $requeteAp="select mdp from APPRENANT where login=\"".$username."\";";
+  $requetePr="select mdp from PROFESSEUR where login=\"".$username."\";";
+  $records=$dbConn->query($requeteAp);
+  $passAp=$records->fetch();
+  $records=$dbConn->query($requetePr);
+  $passPr=$records->fetch();
+  return ($passAp || $passPr);
+}
+
 function getIdAppr($username, $password){
   $dbConn=ouvrirConnexion();
   $requete="select idAppr from APPRENANT where login=".$username." and mdp=".$password.";";
   $id=$dbConn->query($requete)->fetch();
   return $id;
 }
-
-
+/*
+Fonction modifiant dans la base les modifications de l'utilisateur sur ses informations personelles
+Entree : utilisateur à inserer
+*/
 function modifBaseApprenant($user){
   $dbConn=ouvrirConnexion();
   $requete="update APPRENANT set nom=\"".$user->getNom()."\", prenom=\"".$user->getPrenom()."\", login=\"".$user->getLogin()."\", mdp=\"".$user->getMdp(). "\" where idAppr=".$user->getId().";";
@@ -81,6 +71,23 @@ function getLastCours(){
     $tabCours[] = Cours::avecBD($cours);
   }
   return $tabCours;
+}
+/*
+Fonction permettant de récuperer les informations d'un cours (en se servant de COURSSIMPLES pour le moment)
+Entrée : ID du cours
+Sortie : Objet instanciée depuis Cours()
+*/
+function getCours($id){
+  $dbConn=ouvrirConnexion();
+  $requete="select * from COURSSIMPLES where idCours=".$id.";";
+  $res=$dbConn->query($requete);
+  $cours=Cours::avecBDSimple($res->fetch());
+  return $cours;
+}
+function modifBaseCours($id, $intitule, $duree, $contenu){
+  $dbConn=ouvrirConnexion();
+  $requete="update COURSSIMPLES set intituleCours='".$intitule."', dureeEstimee='".$duree."', contenu='".$contenu."' where idCours=".$id.";";
+  $dbConn->prepare($requete)->execute();
 }
 
 

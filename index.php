@@ -17,6 +17,9 @@ if (isset($_GET['action'])){
 	else if($_GET['action']== "mentionsLegales"){
 		mentionsLegales();
 	}
+	else if($_GET['action']=="ajoutModifCours"){
+		ajoutModifCours();
+	}
 	else if($_GET['action']== "login"){
 		login();
 	}

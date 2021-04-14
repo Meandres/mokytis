@@ -26,13 +26,24 @@ CREATE TABLE PROFESSEUR(
 
 CREATE TABLE COURS(
   idCours INT PRIMARY KEY NOT NULL,
-  intituleCours VARCHAR(40) UNIQUE,
+  intituleCours VARCHAR(60) UNIQUE,
   professeur INT,
   accepte BOOL DEFAULT FALSE,
   dateAjout DATE,
   dureeEstimee int,
   FOREIGN KEY (professeur) REFERENCES PROFESSEUR(idProf)
   );
+
+  CREATE TABLE COURSSIMPLES(
+    idCours INT PRIMARY KEY NOT NULL,
+    intituleCours VARCHAR(60) UNIQUE,
+    professeur INT,
+    accepte BOOL DEFAULT FALSE,
+    dateAjout DATE,
+    dureeEstimee int,
+    contenu VARCHAR(1000),
+    FOREIGN KEY (professeur) REFERENCES PROFESSEUR(idProf)
+    );
 
 CREATE TABLE APPRENANT(
   idAppr INT PRIMARY KEY NOT NULL,
@@ -106,7 +117,7 @@ CREATE TABLE MATIERECOURS(
 );
 CREATE TABLE QCM(
   idQCM INT PRIMARY KEY,
-  intituleQCM VARCHAR(32),
+  intituleQCM VARCHAR(60),
   difficulte VARCHAR(32),
   matiere INT,
   FOREIGN KEY (matiere) REFERENCES MATIERE(idMatiere)
@@ -116,7 +127,7 @@ CREATE TABLE QUESTIONSQCM(
   idQuestion INT PRIMARY KEY,
   qcm INT,
   difficulte VARCHAR(32),
-  textQuestion VARCHAR(64),
+  textQuestion VARCHAR(200),
   FOREIGN KEY (qcm) REFERENCES QCM(idQCM)
 );
 
@@ -156,7 +167,7 @@ INSERT INTO COURS VALUES (31, "Polygones", 1, false, CURRENT_DATE(), 4);
 INSERT INTO COURS VALUES (21, "figures de style", 3, true, CURRENT_DATE(), 2);
 INSERT INTO COURS VALUES (41, "énergie cinétique", 4, true, CURRENT_DATE(), 1);
 INSERT INTO COURS VALUES (51, "Verbes irréguliers", 5, false, CURRENT_DATE(), 2);
-INSERT INTO COURS VALUES (61, "Verbes irréguliers", 6, true, CURRENT_DATE(), 2);
+INSERT INTO COURS VALUES (61, "Verbes réguliers", 6, true, CURRENT_DATE(), 2);
 INSERT INTO COURS VALUES (12, "théorème de pythagore", 2, true, CURRENT_DATE(), 4);
 INSERT INTO COURS VALUES (13, "dérivées", 2, false, CURRENT_DATE(), 8);
 INSERT INTO COURS VALUES (42, "atomes et molécules", 8, true, CURRENT_DATE(), 6);
@@ -166,6 +177,22 @@ INSERT INTO COURS VALUES (62, "Conjugaisons au présent", 6, true, CURRENT_DATE(
 INSERT INTO COURS VALUES (63, "Conjugaisons au passé", 6, true, CURRENT_DATE(), 10);
 INSERT INTO COURS VALUES (32, "Programmation orientée objet", 7, false, CURRENT_DATE(), 12);
 INSERT INTO COURS VALUES (33, "Textures", 1, true, CURRENT_DATE(), 2);
+
+INSERT INTO COURSSIMPLES VALUES (11, "Calcul littéral et identites remarquables", 2, true, CURRENT_DATE(), 8, "du calcul avec des lettres oulala ça fait peur");
+INSERT INTO COURSSIMPLES VALUES (31, "Polygones", 1, false, CURRENT_DATE(), 4, "monome aux pluriel");
+INSERT INTO COURSSIMPLES VALUES (21, "figures de style", 3, true, CURRENT_DATE(), 2, "clair obscur");
+INSERT INTO COURSSIMPLES VALUES (41, "énergie cinétique", 4, true, CURRENT_DATE(), 1, "pour vous faire bouger");
+INSERT INTO COURSSIMPLES VALUES (51, "Verbes irréguliers", 5, false, CURRENT_DATE(), 2, "pas très régulier tout ça");
+INSERT INTO COURSSIMPLES VALUES (61, "Verbes réguliers", 6, true, CURRENT_DATE(), 2, "très régulier");
+INSERT INTO COURSSIMPLES VALUES (12, "théorème de pythagore", 2, true, CURRENT_DATE(), 4, "un petit triangle pour le monsieur");
+INSERT INTO COURSSIMPLES VALUES (13, "dérivées", 2, false, CURRENT_DATE(), 8, "des deltas en veux-tu en voilà");
+INSERT INTO COURSSIMPLES VALUES (42, "atomes et molécules", 8, true, CURRENT_DATE(), 6, "des toutes petites choses");
+INSERT INTO COURSSIMPLES VALUES (52, "La Syllicon Valley", 5, true, CURRENT_DATE(), 14, "la vallée du sable plat");
+INSERT INTO COURSSIMPLES VALUES (22, "Etude de texte méthodologie", 3, false, CURRENT_DATE(), 5, "FUYEZ PAUVRES FOUS");
+INSERT INTO COURSSIMPLES VALUES (62, "Conjugaisons au présent", 6, true, CURRENT_DATE(), 8, "no lo sabes");
+INSERT INTO COURSSIMPLES VALUES (63, "Conjugaisons au passé", 6, true, CURRENT_DATE(), 10, "no lo supiste");
+INSERT INTO COURSSIMPLES VALUES (32, "Programmation orientée objet", 7, false, CURRENT_DATE(), 12, "POOOOOOOOOO");
+INSERT INTO COURSSIMPLES VALUES (33, "Textures", 1, true, CURRENT_DATE(), 2, "texels en 2D");
 
 
 INSERT INTO MATIERE VALUES (1, "Mathematiques");
@@ -282,11 +309,11 @@ INSERT INTO TYPEMATERIEL VALUES (4, "Audio");
 INSERT INTO TYPEMATERIEL VALUES (5, "Image");
 
 
-INSERT INTO MATERIELPEDA VALUES (1, 11, 3, "....", 1);
-INSERT INTO MATERIELPEDA VALUES (2, 11, 2, "....", 2);
-INSERT INTO MATERIELPEDA VALUES (3, 21, 1, "....", 1);
-INSERT INTO MATERIELPEDA VALUES (4, 12, 1, "....", 1);
-INSERT INTO MATERIELPEDA VALUES (5, 11, 2, "....", 3);
+INSERT INTO MATERIELPEDA VALUES (1, 11, 1, "text1.txt", 1);
+INSERT INTO MATERIELPEDA VALUES (2, 11, 1, "text2.txt", 2);
+INSERT INTO MATERIELPEDA VALUES (3, 21, 1, "text3.txt", 1);
+INSERT INTO MATERIELPEDA VALUES (4, 12, 1, "text4.txt", 1);
+INSERT INTO MATERIELPEDA VALUES (5, 11, 1, "text5.txt", 3);
 
 
 INSERT INTO SUJETFORUM VALUES (1, "Calcul identité remarquable", "Comment calculer mes identités remarquables svp ?", 11, 1, 1, CURRENT_DATE());
@@ -294,5 +321,5 @@ INSERT INTO SUJETFORUM VALUES (2, "Problème de conjugaison ", "Je voudrais simp
 
 INSERT INTO REPONSEFORUM VALUES (1, "Aucune idée mec", 1, 2, CURRENT_DATE());
 INSERT INTO REPONSEFORUM VALUES (2, "T'as qu'à faire ça mec...", 1, 3, CURRENT_DATE());
-INSERT INTO REPONSEFORUM VALUES (1, "Bonsoir, indicatif passé simple ---> subjonctif imparfait donc : Dijo que = reducir =subjonctif imparfait.", 2, 7, CURRENT_DATE());
-INSERT INTO REPONSEFORUM VALUES (2, "Le temps de la conjugaison du verbe 'reducir' est tributaire de 'bien que' (en se référant à la phrase française comme phrase d'origine) , puis il faut appliquer la concordance des temps au verbe 'cambiar', donc à vous de voir.", 2, 6, CURRENT_DATE());
+INSERT INTO REPONSEFORUM VALUES (3, "Bonsoir, indicatif passé simple ---> subjonctif imparfait donc : Dijo que = reducir =subjonctif imparfait.", 2, 7, CURRENT_DATE());
+INSERT INTO REPONSEFORUM VALUES (4, "Le temps de la conjugaison du verbe 'reducir' est tributaire de 'bien que' (en se référant à la phrase française comme phrase d'origine) , puis il faut appliquer la concordance des temps au verbe 'cambiar', donc à vous de voir.", 2, 6, CURRENT_DATE());

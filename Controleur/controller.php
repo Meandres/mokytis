@@ -6,7 +6,7 @@ require('Modele/Cours.php');
 
 function accueil()
 {
-    // la tu fais les appelles au fonction du modele
+    // la tu fais les appels au fonction du modele
     $tabCours = getLastCours();
     //var_dump($tabCours);
     require('Vue/vueAccueil.php');
@@ -17,7 +17,6 @@ function profil(){
     $user=getApprenant($id);
     $user->modifChamps($_POST['nom'], $_POST['prenom'], $_POST['login'], $_POST['mdp']);
     modifBaseApprenant($user);
-    //commit();
   }
   else{
     $user=getApprenant($id);
@@ -34,6 +33,14 @@ function politique(){
 }
 function mentionsLegales(){
   require("Vue/vueMentionsLegales.php");
+}
+
+function ajoutModifCours(){
+  if(isset($_GET['modif'])){
+    modifBaseCours($_GET['idCours'], $_POST['intituleCours'], $_POST['dureeEstimee'], $_POST['contenu']);
+  }
+  $cours=getCours($_GET['idCours']);
+  require("Vue/vueAjoutModifCours.php");
 }
 
 // Connexion de l'utilisateur
