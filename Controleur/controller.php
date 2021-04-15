@@ -54,7 +54,6 @@ function ajoutModifCours(){
   require("Vue/vueAjoutModifCours.php");
 }
 
-//  NEW
 function listeMatieresForum(){
   $listeMatieres = getAllMatieres();
   require("Vue/vueListeMatieresForum.php");
@@ -64,7 +63,6 @@ function listeSujetsForumByMatiere($id){
   $listeSujetsByMatiere = getAllSujetsByMatiere($id);
   require("Vue/vueListeSujetsForum.php");
 }
-//  END NEW
 
 // Connexion de l'utilisateur
 function login(){
