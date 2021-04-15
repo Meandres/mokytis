@@ -3,6 +3,8 @@
 require('Modele/modele.php');
 require('Modele/LoginManager.php');
 require('Modele/Cours.php');
+require('Modele/Matiere.php');
+require('Modele/SujetForum.php');
 
 function accueil()
 {
@@ -51,6 +53,18 @@ function ajoutModifCours(){
   $cours=getCoursSimplesId($_GET['idCours']);
   require("Vue/vueAjoutModifCours.php");
 }
+
+//  NEW
+function listeMatieresForum(){
+  $listeMatieres = getAllMatieres();
+  require("Vue/vueListeMatieresForum.php");
+}
+
+function listeSujetsForumByMatiere($id){
+  $listeSujetsByMatiere = getAllSujetsByMatiere($id);
+  require("Vue/vueListeSujetsForum.php");
+}
+//  END NEW
 
 // Connexion de l'utilisateur
 function login(){
