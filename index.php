@@ -29,6 +29,15 @@ if (isset($_GET['action'])){
 	else if($_GET['action']== "coursDetails" && isset($_GET['idCours'])){
 		coursDetails($_GET['idCours']);
 	}
+	else if($_GET['action']== "listeMatieresForum"){
+		listeMatieresForum();
+	}
+	else if($_GET['action']== "matiereSujets" && isset($_GET['idMatiere'])){
+		listeSujetsForumByMatiere($_GET['idMatiere']);
+	}
+	else if($_GET['action']== "sujetDetails" && isset($_GET['idSujet'])){
+		sujetDetails($_GET['idSujet']);
+	}
 } else {
 	accueil();
 }
