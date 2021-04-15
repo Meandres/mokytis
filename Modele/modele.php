@@ -13,7 +13,7 @@ Sortie : objet PDO
 
 function ouvrirConnexion(){
   try{
-      $dbConn=new PDO('mysql:host=localhost; dbname=mokytis', "root", "root");
+      $dbConn=new PDO('mysql:host=localhost;dbname=mokytis', "root", "");
       return $dbConn;
   }catch(PDOException $e){
     print "Erreur !: ".$e->getMessage() ."<br/>";
@@ -105,6 +105,25 @@ function modifBaseCours($id, $intitule, $duree, $contenu){
   $requete="update COURSSIMPLES set intituleCours='".$intitule."', dureeEstimee='".$duree."', contenu='".$contenu."' where idCours=".$id.";";
   $dbConn->prepare($requete)->execute();
 }
-
+function getAllMatieres(){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from MATIERE;";
+  $lesMatieres=$dbConn->query($requete)->fetchAll();
+  $tabMatieres = [];
+  foreach ($lesMatieres as $key => $matiere) {
+    $tabMatieres[] = Matiere::avecBD($matiere);
+  }
+  return $tabMatieres;
+}
+function getAllSujetsByMatiere($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from SUJETFORUM where matiere=".$id.";";
+  $lesSujetsByMatiere=$dbConn->query($requete)->fetchAll();
+  $tabSujetsByMatiere = [];
+  foreach ($lesSujetsByMatiere as $key => $sujet) {
+    $tabSujetsByMatiere[] = SujetForum::avecBD($sujet);
+  }
+  return $tabSujetsByMatiere;
+}
 
 ?>

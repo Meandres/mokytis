@@ -59,6 +59,18 @@ class SujetForum{
 		$this->datePubli=$DateP;
 	}
 
+	public function afficherApperçu(){
+		$affichage = "<a class='sujet' href='index.php?action=Sujets&idSujet=".$this->idSujetForum."' ><div class='appercuSujet'><h3>".$this->titre."</h3>".$this->datePubli."<br> ".$this->contenu."</div></a>";
+		return $affichage;
+	}
+
+	//fabrique de classe (à partir d'une requete à la base)
+	public static function avecBD(array $row){
+		$instance=new self();
+		$instance->remplirBD($row);
+		return $instance;
+	}
+
 	//fabrique de classe (pour la creation d'un sujet de forum)
 	public static function creeSujetForum($ID, $Titre, $Contenu, $Cours, $Matiere, $Auteur){
 		$instance=new self();
@@ -67,7 +79,7 @@ class SujetForum{
 	}
 
 	//fabrique de classe (pour le clonage)
-	public static function creeSujetForum($ID, $Titre, $Contenu, $Cours, $Matiere, $Auteur, $DateP){
+	public static function avecModele($ID, $Titre, $Contenu, $Cours, $Matiere, $Auteur, $DateP){
 		$instance=new self();
 		$instance->remplirParam($ID, $Titre, $Contenu, $Cours, $Matiere, $Auteur, $DateP);
 		return $instance;
