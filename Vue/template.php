@@ -17,7 +17,7 @@
 		<div id="header">
 		  <nav>
 		    <a href="index.php?action=accueil">Accueil</a>
-		    <a href="index.php?action=forum">Forum</a>
+		    <a href="index.php?action=listeMatieresForum">Forum</a>
 				<a href="index.php?action=listeCours">Cours</a>
 		    <a href="index.php?action=profil">Mon profil</a>
 
