@@ -13,6 +13,11 @@ ob_start();
     echo $cours->afficherApperçu();
   } ?>
 </div>
+<div class="createClass-container">
+   <form>
+	 <button type="button" id="createClass" onclick=window.location.href='vueAjoutModifCours.php'>Creer un cours</button>
+   </form>
+</div>
 <?php
 $contenu=ob_get_clean();
 require 'template.php';
