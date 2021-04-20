@@ -5,6 +5,9 @@ require('Modele/LoginManager.php');
 require('Modele/Cours.php');
 require('Modele/Matiere.php');
 require('Modele/SujetForum.php');
+require('Modele/QCM.php');
+require('Modele/QuestionsQCM.php');
+
 
 function accueil()
 {
@@ -62,6 +65,11 @@ function listeMatieresForum(){
 function listeSujetsForumByMatiere($id){
   $listeSujetsByMatiere = getAllSujetsByMatiere($id);
   require("Vue/vueListeSujetsForum.php");
+}
+
+function pageQCM($idCours){
+  $qcm = getQCM($idCours);
+  require("Vue/vueQCM.php");
 }
 
 // Connexion de l'utilisateur

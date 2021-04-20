@@ -6,8 +6,7 @@
 	<link rel="stylesheet" href="Style/orangeIsTheNewBlack.css" media="screen">
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
 	<title><?php $titre ?></title>
 </head>
 <body>

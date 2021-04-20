@@ -283,6 +283,13 @@ nav > a {
   text-align: center;
 }
 
+.question-container {
+text-align: center;
+}
+.question-container > h2{
+  display: block;
+}
+
 
 
 /*

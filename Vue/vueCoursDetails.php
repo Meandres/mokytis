@@ -7,7 +7,8 @@ ob_start();
   <div class="info-cours">
     <?php echo "réalisé par : ".$cours->getProfesseur(); ?> <br>
     <?php echo "date d'ajout : ".$cours->getDateAjout(); ?> <br>
-    <?php echo "temps estimé du cours : ".$cours->getDureeEstimee()." minutes"; ?> <br>
+    <?php echo "temps estimé du cours : ".$cours->getDureeEstimee()." minutes"?> <br>
+
   </div>
   <div class="cours-ecrit">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ipsum ut viverra tincidunt. Mauris vitae vestibulum nulla, ut malesuada nibh. Aliquam erat volutpat. Vestibulum nec erat ut mauris bibendum sodales id et urna. Curabitur consequat nec enim eu tempor. Fusce ut lorem et mi euismod placerat. Maecenas scelerisque venenatis odio at dictum.
@@ -27,7 +28,7 @@ ob_start();
            <button id="bModif" name="buttonModif">Modifier le cours</button>
          </a>
        <?php }else{ ?>
-          <a href="index.php?action=coursDetails&idCours="<?php echo $cours->getIdCours();?>>
+          <a href="index.php?action=qcm&idCours=<?php echo $cours->getIdCours();?>">
             <button id="bQCM" name="buttonQCM"> Faire le test</button>
           </a>
         <?php

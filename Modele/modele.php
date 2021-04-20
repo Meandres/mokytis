@@ -13,7 +13,7 @@ Sortie : objet PDO
 
 function ouvrirConnexion(){
   try{
-      $dbConn=new PDO('mysql:host=localhost;dbname=mokytis', "root", "");
+      $dbConn=new PDO('mysql:host=localhost;dbname=mokytis', "root", "root");
       return $dbConn;
   }catch(PDOException $e){
     print "Erreur !: ".$e->getMessage() ."<br/>";
@@ -93,6 +93,7 @@ function getCoursId($id){
   $cours = Cours::avecBD($cours1);
   return $cours;
 }
+
 function getCoursSimplesId($id){
   $dbConn = ouvrirConnexion();
   $requete = "select * from COURSSIMPLES where idCours=".$id.";";
@@ -125,5 +126,17 @@ function getAllSujetsByMatiere($id){
   }
   return $tabSujetsByMatiere;
 }
+
+// partie quizz
+function getQCM($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from QCM where cours=".$id.";";
+  $qcm = $dbConn->query($requete)->fetch();
+  $qcm = QCM::avecBD($qcm);
+  return $qcm;
+}
+
+
+
 
 ?>

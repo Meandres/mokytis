@@ -119,8 +119,8 @@ CREATE TABLE QCM(
   idQCM INT PRIMARY KEY,
   intituleQCM VARCHAR(60),
   difficulte VARCHAR(32),
-  matiere INT,
-  FOREIGN KEY (matiere) REFERENCES MATIERE(idMatiere)
+  cours INT,
+  FOREIGN KEY (cours) REFERENCES COURS(idCours)
 );
 
 CREATE TABLE QUESTIONSQCM(
@@ -220,52 +220,55 @@ INSERT INTO MATIERECOURS VALUES (14, 32, 3);
 INSERT INTO MATIERECOURS VALUES (15, 33, 3);
 
 
-INSERT INTO QCM VALUES (1, "Evaluation niveau mathématiques", "Facile", 1);
-INSERT INTO QCM VALUES (2, "Evaluation niveau francais", "Facile", 2);
-INSERT INTO QCM VALUES (3, "Evaluation niveau informatique", "Facile", 3);
-INSERT INTO QCM VALUES (4, "Evaluation niveau physique-chimie", "Facile", 4);
-INSERT INTO QCM VALUES (5, "Evaluation niveau anglais", "Facile", 5);
-INSERT INTO QCM VALUES (6, "Evaluation niveau espagnol", "Facile", 6);
-INSERT INTO QCM VALUES (7, "Validation cours calcul littéral et identites remarquables", "Moyen", 1);
-INSERT INTO QCM VALUES (8, "Validation cours figures de style", "Moyen", 2);
-INSERT INTO QCM VALUES (9, "Validation cours Polygones", "Difficile", 3);
-INSERT INTO QCM VALUES (10, "Validation cours énergie cinétique", "Facile", 4);
-INSERT INTO QCM VALUES (11, "Validation cours Verbes irréguliers", "Facile", 5);
-INSERT INTO QCM VALUES (12, "Validation cours Verbes irréguliers", "Facile", 6);
-INSERT INTO QCM VALUES (13, "Validation cours théorème de pythagore", "Facile", 1);
-INSERT INTO QCM VALUES (14, "Validation cours dérivées", "Moyen", 1);
-INSERT INTO QCM VALUES (15, "Validation cours atomes et molécules", "Moyen", 4);
-INSERT INTO QCM VALUES (16, "Validation cours La Syllicon Valley", "Facile", 5);
-INSERT INTO QCM VALUES (17, "Validation cours Etude de texte méthodologie", "Facile", 2);
-INSERT INTO QCM VALUES (18, "Validation cours Conjugaisons au présent", "Facile", 6);
-INSERT INTO QCM VALUES (19, "Validation cours Conjugaisons au passé", "Difficile", 6);
-INSERT INTO QCM VALUES (20, "Validation cours Programmation orientée objet", "Moyen", 3);
-INSERT INTO QCM VALUES (21, "Validation cours Textures", "Facile", 3);
+-- INSERT INTO QCM VALUES (1, "Evaluation niveau mathématiques", "Facile", 1);
+-- INSERT INTO QCM VALUES (2, "Evaluation niveau francais", "Facile", 2);
+-- INSERT INTO QCM VALUES (3, "Evaluation niveau informatique", "Facile", 3);
+-- INSERT INTO QCM VALUES (4, "Evaluation niveau physique-chimie", "Facile", 4);
+-- INSERT INTO QCM VALUES (5, "Evaluation niveau anglais", "Facile", 5);
+-- INSERT INTO QCM VALUES (6, "Evaluation niveau espagnol", "Facile", 6);
+
+INSERT INTO QCM VALUES (7, "Validation cours calcul littéral et identites remarquables", "Moyen", 11);
+INSERT INTO QCM VALUES (8, "Validation cours figures de style", "Moyen", 21);
+INSERT INTO QCM VALUES (9, "Validation cours Polygones", "Difficile", 31);
+INSERT INTO QCM VALUES (10, "Validation cours énergie cinétique", "Facile", 41);
+INSERT INTO QCM VALUES (11, "Validation cours Verbes irréguliers", "Facile", 51);
+INSERT INTO QCM VALUES (12, "Validation cours Verbes réguliers", "Facile", 61);
+INSERT INTO QCM VALUES (13, "Validation cours théorème de pythagore", "Facile", 12);
+INSERT INTO QCM VALUES (14, "Validation cours dérivées", "Moyen", 13);
+INSERT INTO QCM VALUES (15, "Validation cours atomes et molécules", "Moyen", 42);
+INSERT INTO QCM VALUES (16, "Validation cours La Syllicon Valley", "Facile", 52);
+INSERT INTO QCM VALUES (17, "Validation cours Etude de texte méthodologie", "Facile", 22);
+INSERT INTO QCM VALUES (18, "Validation cours Conjugaisons au présent", "Facile", 62);
+INSERT INTO QCM VALUES (19, "Validation cours Conjugaisons au passé", "Difficile", 63);
+INSERT INTO QCM VALUES (20, "Validation cours Programmation orientée objet", "Moyen", 32);
+INSERT INTO QCM VALUES (21, "Validation cours Textures", "Facile", 33);
+
+ -- modification Thomas
 
 
-INSERT INTO QUESTIONSQCM VALUES (1, 1, "facile", "Pourquoi?");
-INSERT INTO QUESTIONSQCM VALUES (2, 2, "facile", "Donnez la première couleur du drapeau français.");
-INSERT INTO QUESTIONSQCM VALUES (3, 3, "moyen", "Donnez la couleur du soleil");
-INSERT INTO QUESTIONSQCM VALUES (4, 3, "difficile", "Quelle est la température du soleil");
-INSERT INTO QUESTIONSQCM VALUES (5, 4, "facile", "quelle est la différence entre poids et masse ?");
-INSERT INTO QUESTIONSQCM VALUES (6, 5, "difficile", "Sélectionner les phrases à la forme indirecte :");
-INSERT INTO QUESTIONSQCM VALUES (7, 6, "difficile", "Que veut dire 'empezar' en espagnol ?");
+-- INSERT INTO QUESTIONSQCM VALUES (1, 1, "facile", "Pourquoi?");
+-- INSERT INTO QUESTIONSQCM VALUES (2, 2, "facile", "Donnez la première couleur du drapeau français.");
+-- INSERT INTO QUESTIONSQCM VALUES (3, 3, "moyen", "Donnez la couleur du soleil");
+-- INSERT INTO QUESTIONSQCM VALUES (4, 3, "difficile", "Quelle est la température du soleil");
+-- INSERT INTO QUESTIONSQCM VALUES (5, 4, "facile", "quelle est la différence entre poids et masse ?");
+-- INSERT INTO QUESTIONSQCM VALUES (6, 5, "difficile", "Sélectionner les phrases à la forme indirecte :");
+-- INSERT INTO QUESTIONSQCM VALUES (7, 6, "difficile", "Que veut dire 'empezar' en espagnol ?");
 INSERT INTO QUESTIONSQCM VALUES (8, 7, "moyen", "Lorsque l’on développe et réduit l’expression E=(3a+2)(5a-4), on obtient :");
 INSERT INTO QUESTIONSQCM VALUES (9, 7, "moyen", "Lorsque l’on développe et réduit l’expression D=-4a(2a-7), on obtient :");
 INSERT INTO QUESTIONSQCM VALUES (10, 7, "difficile", "Lorsque l’on développe à l’aide d’une identité remarquable l’expression J=(t-7)^2, on obtient :");
 
 
-INSERT INTO REPONSESQCM VALUES (1, 1, "Parce que", true);
-INSERT INTO REPONSESQCM VALUES (2, 2, "Rouge", false);
-INSERT INTO REPONSESQCM VALUES (3, 3, "Jaune", false);
-INSERT INTO REPONSESQCM VALUES (4, 4, "100000", false);
-INSERT INTO REPONSESQCM VALUES (5, 5, "I like cats", false);
-INSERT INTO REPONSESQCM VALUES (6, 6, "Aller", false);
-INSERT INTO REPONSESQCM VALUES (7, 1, "Pourquoi pas ?", false);
-INSERT INTO REPONSESQCM VALUES (8, 2, "Bleu", true);
-INSERT INTO REPONSESQCM VALUES (9, 3, "Blanc", true);
-INSERT INTO REPONSESQCM VALUES (10, 5, "Cats are loved by me", true);
-INSERT INTO REPONSESQCM VALUES (11, 6, "Commencer", true);
+-- INSERT INTO REPONSESQCM VALUES (1, 1, "Parce que", true);
+-- INSERT INTO REPONSESQCM VALUES (2, 2, "Rouge", false);
+-- INSERT INTO REPONSESQCM VALUES (3, 3, "Jaune", false);
+-- INSERT INTO REPONSESQCM VALUES (4, 4, "100000", false);
+-- INSERT INTO REPONSESQCM VALUES (5, 5, "I like cats", false);
+-- INSERT INTO REPONSESQCM VALUES (6, 6, "Aller", false);
+-- INSERT INTO REPONSESQCM VALUES (7, 1, "Pourquoi pas ?", false);
+-- INSERT INTO REPONSESQCM VALUES (8, 2, "Bleu", true);
+-- INSERT INTO REPONSESQCM VALUES (9, 3, "Blanc", true);
+-- INSERT INTO REPONSESQCM VALUES (10, 5, "Cats are loved by me", true);
+-- INSERT INTO REPONSESQCM VALUES (11, 6, "Commencer", true);
 INSERT INTO REPONSESQCM VALUES (12, 8, "-5a^2", false);
 INSERT INTO REPONSESQCM VALUES (13, 8, "15a^2-2a-8", true);
 INSERT INTO REPONSESQCM VALUES (14, 8, "15a^2-8", false);
@@ -275,8 +278,8 @@ INSERT INTO REPONSESQCM VALUES (17, 9, "-8a^2+28a", true);
 INSERT INTO REPONSESQCM VALUES (18, 10, "t^2-49", false);
 INSERT INTO REPONSESQCM VALUES (19, 10, "t^2-14t-49", true);
 INSERT INTO REPONSESQCM VALUES (20, 10, "t^2-14t+49", false);
-
-
+--
+--
 INSERT INTO SUIT VALUES (1, 11);
 INSERT INTO SUIT VALUES (1, 12);
 INSERT INTO SUIT VALUES (1, 13);

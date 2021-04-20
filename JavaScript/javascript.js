@@ -1,7 +1,8 @@
+var nbQuestion = 0;
+var tabReponse = [];
+var resultat = false;
 
 $("#profilContainer").hide();
-
-
 $("#profil").click(function(){
   $("#profilContainer").toggle( "slide" ,{ direction: "right"});
 });
@@ -24,5 +25,37 @@ $(document).ready(function(){
          }
        }
      })
+  })
+
+  $("#buttonQuestion").click(function(){
+    if(resultat == false){
+      if (nbQuestion > 0){
+        tabReponse.push($('.questionCheckbox:checked').attr('id'));
+      }
+      nbQuestion++;
+      console.log(tabReponse);
+      $("#titreQcm").html("question n°"+nbQuestion);
+      $("#buttonQuestion").html("question suivante");
+      $.ajax({
+        type: 'POST',
+        url: 'Controleur/qcmHandler.php',
+        data: {question: nbQuestion, idQcm: $('#idQcm').val(),listeReponse: tabReponse },
+        success: function(data){
+          if (data != ""){
+            data = data.split("@:")
+            if(data[0] == "fini"){
+              resultat = true;
+              $('#question').html(data[1]);
+              $("#buttonQuestion").html("revenir a l'accueil");
+              $("#titreQcm").html("Résultat");
+            }else{
+              $('#question').html(data[0]);
+            }
+          }
+        }
+      })
+    }else{
+      window.location.replace("index.php");
+    }
   })
 })
