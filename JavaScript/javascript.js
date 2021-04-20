@@ -14,7 +14,7 @@ $(document).ready(function(){
     var cours = $(this).val();
      $.ajax({
        type: 'POST',
-       url: 'Controleur/rechercheBar.php',
+       url: 'Controleur/researchBar.php',
        data :'cours='+ cours,
        success : function(data){
          if(data != ""){
