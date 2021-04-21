@@ -3,14 +3,14 @@ $titre="Mokytis";
 
 ob_start();
 
-echo "<h2>".$qcm->getIntituleQCM()."</h2>";
-echo "<h3>".$qcm->getDifficulte()."</h3>";
+echo "<h1>".$qcm->getIntituleQCM()."</h1>";
+echo "<div class='difficulte'>Difficulté du test : ".$qcm->getDifficulte()."</div>";
 ?>
 <input type="hidden" id="idQcm" value='<?php echo $qcm->getIdQCM()?>'>
 <div class="question-container">
   <h2 id="titreQcm">Le QCM</h2>
   <div id="question">
-    ALLER
+    
   </div>
   <button id="buttonQuestion" type="button" name="button">Commencer le test</button>
 </div>

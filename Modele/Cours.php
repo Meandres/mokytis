@@ -94,7 +94,10 @@ class Cours{
 	}
 
 	public function afficherApperçu(){
-		$contenu = "<a class='cours' href='index.php?action=coursDetails&idCours=".$this->idCours."' ><div class='appercuCours'><h3>".$this->intituleCours."</h3>".$this->dateAjout."<br> ".$this->dureeEstimee."</div></a>";
+		$contenu = "<div class='appercuCours'><a class='cours' href='index.php?action=coursDetails&idCours=".$this->idCours."'>
+		<div><h3>".$this->intituleCours."</h3>ajout : ".$this->dateAjout."<br>
+		durée estimé : ".$this->dureeEstimee." min
+		</div></a><button type='button' name='button' class='ajoutButton'>  <i class='material-icons'>add</i></button></div>";
 		return $contenu;
 	}
 

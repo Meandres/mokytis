@@ -2,17 +2,23 @@
 <!doctype html>
 <html lang="fr">
 <head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 	<meta charset="UTF-8"/>
-	<link rel="stylesheet" href="Style/orangeIsTheNewBlack.css" media="screen">
+	<link rel="stylesheet" href="Style/style.css" media="screen">
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
+
 	<title><?php $titre ?></title>
 </head>
 <body>
 	<div id="global">
 	<header>
-		<h1><img src="Ressources/logo.jpeg" alt="Logo" width="50" height="50"> Mokytis</h1>
+		<div class="logo">
+			<h1><img id="logoImg" src="Ressources/logo.jpeg" alt="Logo" width="50" height="50"> Mokytis</h1>
+		</div>
 		<div id="header">
 		  <nav>
 		    <a href="index.php?action=accueil">Accueil</a>
@@ -45,20 +51,23 @@
 	</div>
 	<div id="contenu">
 		<?php echo $contenu ?>
+		  <div class="push"></div>
 	</div>
-	<footer>
-		<div id="footer">
-		<p style="padding-top: 5px;">@ 2021 Mokytis. Tous droits réservés.
-		<select class="themeButton" style="background-color: lightgrey; padding: 2px;">
-			<option value="ClaBlack">Classic Black</option>
-			<option value="NeoBlue">Neo Blue</option>
-		</select><br/><br/><br/>
-		<span class="footer_links" style="padding-bottom: 20px;">
+	<footer class="footer">
+		<div class="droits">
+			@ 2021 Mokytis. Tous droits réservés.
+		</div>
+		<div class="themeSelection">
+			choix du style :
+			<select class="themeButton">
+				<option value="ClaBlack">Classic Black</option>
+				<option value="NeoBlue">Neo Blue</option>
+			</select>
+		</div>
+		<div class="footer_links">
 			<a href="index.php?action=contact">Nous contacter</a>
-		  	<a href="index.php?action=politique">Politique de protection de la vie privée</a>
-		  	<a href="index.php?action=mentionsLegales">Conditions et mentions Légales</a>
-		  </span>
-		</p>
+			<a href="index.php?action=politique">Politique de protection de la vie privée</a>
+			<a href="index.php?action=mentionsLegales">Conditions et mentions Légales</a>
 		</div>
 	</footer>
 	</div>

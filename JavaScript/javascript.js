@@ -7,10 +7,19 @@ $("#profil").click(function(){
   $("#profilContainer").toggle( "slide" ,{ direction: "right"});
 });
 
+$(".ajoutButton").click(function(){
+  if($(this).html() == "<i class=\"material-icons\">check</i>"){
+    $(this).html("<i class='material-icons'>add</i>")
+  }else{
+    $(this).html("<i class='material-icons'>check</i>")
+  }
+  console.log($(this).html());
+})
+
 
 
 $(document).ready(function(){
-  $("#reacherchBar").keyup(function(){
+  $("#researchBar").keyup(function(){
     var cours = $(this).val();
      $.ajax({
        type: 'POST',

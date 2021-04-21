@@ -1,50 +1,263 @@
-/* partie positionnement et déco */
+h1:not(.logo > h1)::after {
+    margin-top: 0;
+    content: '';
+    display: block;
+    width: 2.3em;
+    height: 10px;
+    background: #64b7f5;
+
+}
+h1:not(.logo > h1){
+	padding-left: 5%;
+	text-shadow: 1px 2px 2px #64b7f5;
+}
+
+
+
+
+/* partie template du site  */
 nav > a {
+	color: black;
 	text-decoration:none;
-	padding-left: 4%;
-	padding-right: 4%;
+	padding-left: 2%;
+	padding-right: 2%;
 	font-size: 150%;
+}
+nav > a:hover{
+	color: white;
 }
 nav {
 	text-align: right;
-	padding-right: 20%;
+	padding-right: 3%;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background-color: grey;
+	background-color: #64b7f5;
 }
 body{
-	margin:0;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
 }
+.logo{
+	padding-left: 20px;
+	padding-top: 10px;
+	font-size: 1.4em;
+}
+.logo > h1{
+	margin-bottom: 0;
+}
+#logoImg{
+	border-radius: 5px;
+}
+
 #profilContainer{
 	position: absolute;
 	left: 86%;
 	float: right;
-	background-color: blue;
+	background-color: red;
 	padding-right: 5.7%;
 	height: 100%;
 }
-.imgBox {
-  display: grid;
-	height: 100%;
-	background-color: rgb(250,250,250);
-}
+
 .center-fit {
-  max-width: 60%;
-  max-height: 100vh;
+	padding-top: 5%;
+  max-width: 40%;
+  max-height: 80vh;
   margin: auto;
-	background-color: rgb(240,240,240);
 }
 .encardrement{
-	margin-top: 5%;
-	padding: 10px;
-	border-radius: 10px;
-  background-color: rgba(50, 50, 50, 0.8);
-	color: white;
-	position: absolute;
-  left: 50%;
+	width: 40%;
+	float: left;
+	margin-right: 10%;
+	font-size: 1.2em;
+}
+.imageBox{
+padding: 40px;
+padding-bottom: 100px;
+float: right;
 
-  transform: translate(-50%, 0%);
+}
+.encardrement >h3{
+	font-size: 2em;
+	margin: 0;
+	text-shadow: 1px 2px 2px #64b7f5;
+
 }
 table, th, ts{
 	   border: 1px solid black;
+}
+
+footer{
+	background-color: #64b7f5;
+	text-align:center;
+	padding-bottom: 20px;
+
+
+}
+.droits{
+	padding-top: 5px;
+	margin-bottom: 10px;
+}
+
+.footer_links{
+	padding-top: 10px;
+
+}
+.footer_links > a {
+	text-decoration: none;
+	color: black;
+	padding-left: 2%;
+	font-size: 1.4em;
+}
+.footer_links > a:hover {
+	text-decoration: none;
+	color: white;
+
+}
+/* partie Cours du site  */
+.lastCours{
+padding-left: 10%;
+padding-right: 10%;
+
+}
+.search-container{
+  text-align: center;
+}
+#researchBar{
+  font-size: 1.4em;
+  text-align: center;
+}
+
+
+.appercuCours{
+	position: relative;
+	background-color: #8fcfffab;
+	width: 30%;
+	height: 130px;
+	margin: 10px;
+	float: left;
+	border-radius: 5px;
+	border: solid 1px #64b7f5;
+	box-shadow: 2px 2px 5px #64b7f5;
+	padding-left: 10px;
+}
+.ajoutButton{
+	background-color: #fff0;
+	border: solid 1px black;
+	border-radius: 5px;
+	position: absolute;
+  right: 10px;
+	bottom: 10px;
+}
+.ajoutButton:hover{
+  box-shadow: inset 0 0 0 2em white;
+}
+
+button {
+	 color: black;
+	 transition: 0.50s;
+   cursor: pointer;
+}
+ button:hover, button:focus {
+	 border-color: black;
+	 color: black;
+}
+
+.appercuCours > a{
+	color: black;
+	text-decoration: none;
+}
+.clearBoth { clear:both; }
+
+.info-cours{
+  display: block;
+  background-color: #effaff;
+  width: 20%;
+  padding: 20px;
+  margin-left: 40px;
+  border-radius: 5px;
+  color: black;
+  border: solid 1px #64b7f5;
+  margin-bottom: 10px;
+}
+.cours-ecrit{
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: justify;
+}
+.container-button{
+  text-align: center;
+  margin: 20px;
+}
+#bQCM, #buttonQuestion{
+  font-size: 1.3em;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid 1px #64b7f5;
+  background-color: #effaff;
+  border-radius: 5px;
+
+
+}
+#bQCM:hover,
+#bQCM:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em #64b7f5;
+  transform: translateY(-0.25em);
+}
+.difficulte{
+  padding-left: 10%;
+  font-size: 1.3em;
+}
+.question-container{
+  margin-left: 50%;
+  transform: translate(-50%,0);
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+#question{
+  text-align: left;
+}
+.enonce{
+  padding: 10px;
+  background-color: #effaff;
+  border: solid 1px #64b7f5;
+  border-radius: 5px;
+}
+#buttonQuestion{
+  margin-top: 20px;
+  margin-left:50%  ;
+  transform: translate(-50%,0);
+}
+#buttonQuestion:hover{
+  box-shadow: inset 13em 0 0 0 #64b7f5 ;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+#contenu {
+    min-height: calc(100vh - 300px);
+}
+.footer{
+      height: 100px;
+}
+.comboBox{
+  margin: 20px;
+}
+
+.wrong{
+  background-color: #ff4f4f66;
+  margin: 10px;
+  padding: 20px;
+  border: solid 2px red;
+  border-radius: 5px;
+}
+.good{
+  margin: 10px;
+  padding: 20px;
+  background-color: #2fb52f3b;
+  border: solid 2px green;
+  border-radius: 5px;
+
 }

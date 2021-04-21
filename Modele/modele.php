@@ -54,6 +54,13 @@ function getIdAppr($username, $password){
   $id=$dbConn->query($requete)->fetch();
   return $id;
 }
+
+function getProfWithId($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select nom,prenom from PROFESSEUR where idProf=".$id.";";
+  $tab = $dbConn->query($requete)->fetch();
+  return $tab;
+}
 /*
 Fonction modifiant dans la base les modifications de l'utilisateur sur ses informations personelles
 Entree : utilisateur à inserer
@@ -68,7 +75,7 @@ function modifBaseApprenant($user){
 
 function getLastCours(){
   $dbConn = ouvrirConnexion();
-  $requete="select * from COURS order by dateAjout DESC limit 5;";
+  $requete="select * from COURS order by dateAjout DESC limit 6;";
   $lesCours=$dbConn->query($requete)->fetchAll();
   $tabCours = [];
   foreach ($lesCours as $key => $cours) {

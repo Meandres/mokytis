@@ -45,7 +45,7 @@ function listeCours(){
 }
 function coursDetails($id){
   $cours = getCoursId($id);
-
+  $prof = getProfWithId($cours->getProfesseur());
   require("Vue/vueCoursDetails.php");
 }
 

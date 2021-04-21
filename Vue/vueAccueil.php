@@ -3,12 +3,16 @@ $titre="Mokytis";
 
 ob_start();
 ?>
-<div class="imgBox">
-	<img class="center-fit" src="Ressources/imagePresentation.png" alt="">
+<div class="imageBox">
+
 	<div class="encardrement">
-		<h3> Mokytis </h3>
-		<p> Apprendre les cours en ligne, blabliblou c'est cool la vie et les sushis aussi </p>
+		<h3> Apprentissage en ligne </h3>
+		<p> Grâce à notre platforme, apprendre ne vous aura jamais été aussi simple. Avec nos nombreux enseignants qui mettent à votre disposition des cours
+		les plus à jour possible et avec un système de validation de vos connaissances, obtenez votre certifications Mokytis dans de nombreux domaine. La
+		communauté actives de Mokytis vous permettra à l'aide du forum communautaire mit à la disposition des utilisateurs de répondre à vos questions
+		sur les différents cours.</p>
 	</div>
+	<img class="center-fit" src="Ressources/image.png" alt="">
 </div>
 
 <?php
@@ -33,6 +37,7 @@ Blabmalbalbalbla
 	}
 ?>
 </div>
+<br class="clearBoth" /><!-- you may or may not need this -->
 
 
 

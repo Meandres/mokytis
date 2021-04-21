@@ -5,7 +5,7 @@ ob_start();
 <div class="cours-container">
 
   <div class="info-cours">
-    <?php echo "réalisé par : ".$cours->getProfesseur(); ?> <br>
+    <?php echo "réalisé par : ".$prof[0]." ".$prof[1]; ?> <br>
     <?php echo "date d'ajout : ".$cours->getDateAjout(); ?> <br>
     <?php echo "temps estimé du cours : ".$cours->getDureeEstimee()." minutes"?> <br>
 

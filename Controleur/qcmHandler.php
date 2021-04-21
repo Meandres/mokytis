@@ -10,14 +10,14 @@ if(isset($_POST['question']) && isset($_POST['idQcm'])){
   $questions = $dbConn->query($requete)->fetchAll();
   if(count($questions) > $numQuestion ){
     $question =  QuestionsQCM::avecBD($questions[$numQuestion]);
-    echo "<div>".$question->getTextQuestion()."</div><div> difficulté :".$question->getDifficulte()."</div>";
+    echo "<div class='enonce'>".$question->getTextQuestion()."<br> difficulté : ".$question->getDifficulte()."</div>";
 
     $requete = "select * from REPONSESQCM where question=".$question->getIdQuestion().";";
     $reponses = $dbConn->query($requete)->fetchAll();
     foreach ($reponses as $key => $reponse) {
       $rep = ReponsesQCM::avecBD($reponse);
       echo "
-      <div>
+      <div class='comboBox'>
         <input class='questionCheckbox' type='checkbox' id=".$rep->getIdReponsesQCM()." name=".$rep->getIdReponsesQCM().">
         <label for=".$rep->getIdReponsesQCM().">".$rep->getTextReponse()."</label>
       </div>";
@@ -34,10 +34,10 @@ if(isset($_POST['question']) && isset($_POST['idQcm'])){
          $rep = ReponsesQCM::avecBD($reponse);
          if($rep->getEstJuste() == 1){
            if($rep->getIdReponsesQCM() == $_POST['listeReponse'][$key]){
-             echo "<div>tu as juste beau gosse</div>";
+             echo "<div class='good'>".$que->getTextQuestion()."</div>";
            }else{
-             echo "<div>tu es une merde la réponse à la question   ".$que->getTextQuestion()."  </div>
-             <div>".$rep->getTextReponse()."</div>";
+             echo "<div class='wrong'>".$que->getTextQuestion()."<br> la reponse était : "
+             .$rep->getTextReponse()."</div>";
            }
          }
        }
