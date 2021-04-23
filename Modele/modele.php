@@ -35,10 +35,14 @@ function getApprenant($id){
 
 function verifCredentialsApprenant($username, $password){
   $dbConn=ouvrirConnexion();
-  $requeteAp="select mdp from APPRENANT where login=\"".$username."\";";
-  $records=$dbConn->query($requeteAp);
-  $passAp=$records->fetch();
-  return ($passAp!=false);
+  $requeteAp="select mdp, idAppr from APPRENANT where login=\"".$username."\";";
+  $records=$dbConn->query($requeteAp)->fetch();
+  if(isset($records['mdp'])){
+    $result = $records['idAppr'];
+  }else{
+    $result = -1;
+  }
+  return $result;
 }
 function verifCredentialsProf($username, $password){
   $dbConn=ouvrirConnexion();
@@ -75,7 +79,7 @@ function modifBaseApprenant($user){
 
 function getLastCours(){
   $dbConn = ouvrirConnexion();
-  $requete="select * from COURS order by dateAjout DESC limit 6;";
+  $requete="select * from COURSSIMPLES order by dateAjout DESC limit 6;";
   $lesCours=$dbConn->query($requete)->fetchAll();
   $tabCours = [];
   foreach ($lesCours as $key => $cours) {
@@ -85,7 +89,7 @@ function getLastCours(){
 }
 function getAllCours(){
   $dbConn = ouvrirConnexion();
-  $requete = "select * from COURS;";
+  $requete = "select * from COURSSIMPLES;";
   $lesCours=$dbConn->query($requete)->fetchAll();
   $tabCours = [];
   foreach ($lesCours as $key => $cours) {
@@ -95,7 +99,7 @@ function getAllCours(){
 }
 function getCoursId($id){
   $dbConn = ouvrirConnexion();
-  $requete = "select * from COURS where idCours=".$id.";";
+  $requete = "select * from COURSSIMPLES where idCours=".$id.";";
   $cours1 = $dbConn->query($requete)->fetch();
   $cours = Cours::avecBD($cours1);
   return $cours;
@@ -141,6 +145,18 @@ function getQCM($id){
   $qcm = $dbConn->query($requete)->fetch();
   $qcm = QCM::avecBD($qcm);
   return $qcm;
+}
+
+function listeMesCours(){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from COURSSIMPLES where exists(
+    select * from SUIT where apprenant=".$_SESSION['newsession']." and cours = COURSSIMPLES.idCours );";
+  $lesCours = $dbConn->query($requete)->fetchAll();
+  $tabCours = [];
+  foreach ($lesCours as $key => $cours) {
+    $tabCours[] = Cours::avecBD($cours);
+  }
+  return $tabCours;
 }
 
 

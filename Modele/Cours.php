@@ -1,6 +1,7 @@
 <?php
 date_default_timezone_set('CET');
 
+
 //Création de la classe cours
 class Cours{
 	private $idCours, $intituleCours, $professeur, $accepte, $dateAjout, $dureeEstimee, $contenu;
@@ -96,8 +97,20 @@ class Cours{
 	public function afficherApperçu(){
 		$contenu = "<div class='appercuCours'><a class='cours' href='index.php?action=coursDetails&idCours=".$this->idCours."'>
 		<div><h3>".$this->intituleCours."</h3>ajout : ".$this->dateAjout."<br>
-		durée estimé : ".$this->dureeEstimee." min
-		</div></a><button type='button' name='button' class='ajoutButton'>  <i class='material-icons'>add</i></button></div>";
+		durée estimé : ".$this->dureeEstimee." min";
+
+		if(isset($_SESSION["newsession"])){
+			$dbConn=new PDO('mysql:host=localhost;dbname=mokytis', "root", "root");
+			$requete = "select * from SUIT where apprenant=".$_SESSION["newsession"]." and cours=".$this->idCours.";";
+	    $result = $dbConn->query($requete)->fetch();
+			if($result != false){
+				$contenu = $contenu."</div></a><button id=".$this->idCours." type='button' name='button' class='ajoutButton'><i class='material-icons'>check</i></button></div>";
+			}else{
+				$contenu = $contenu."</div></a><button id=".$this->idCours." type='button' name='button' class='ajoutButton'><i class='material-icons'>add</i></button></div>";
+			}
+		}else{
+			$contenu = $contenu."</div></a><button id=".$this->idCours." type='button' name='button' class='ajoutButton'><i class='material-icons'>add</i></button></div>";
+		}
 		return $contenu;
 	}
 

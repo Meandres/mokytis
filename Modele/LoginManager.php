@@ -11,10 +11,10 @@ class LoginManager{
     //TO DO
 	}
   public function loginUser($username, $password){
-    $conAp=verifCredentialsApprenant($username, $password);
+    $idAppr=verifCredentialsApprenant($username, $password);
     $conP=verifCredentialsProf($username, $password);
-    if ($conAp || $conP){
-      $_SESSION["newsession"]= $username;
+    if ($idAppr != -1 || $conP){
+      $_SESSION["newsession"]= $idAppr;
       if($conP)
         $_SESSION['prof']=1;
       return true;

@@ -34,30 +34,28 @@
 		    <a href="index.php?action=accueil">Accueil</a>
 		    <a href="index.php?action=listeMatieresForum">Forum</a>
 				<a href="index.php?action=listeCours">Cours</a>
-		    <a href="index.php?action=profil">Mon profil</a>
 
-				<button type="button" name="button" id="profil"> profil</button>
+				<?php
+				//echo $_SESSION["newsession"];
+				/* Si l'utilisateur est connecté on affiche un lien Déconnecter sinon
+				on affiche un lien Connexion
+				*/
+	      if (isset($_SESSION["newsession"])) {
+	        echo "<a  id='profil-hamburger'><i class='material-icons'>toc</i></a>";
+	      }else{
+
+	        echo "<button onclick='window.location.href = \" index.php?action=login \";' type='button' name='button' id='profil-button'> Connexion</button>";
+	      }
+	       ?>
+
 		  </nav>
 		</div>
 	</header>
 	<div id="profilContainer">
-		<ul>
-			<?php
-			/* Si l'utilisateur est connecté on affiche un lien Déconnecter sinon
-			on affiche un lien Connexion
-			*/
-      if (isset($_SESSION["newsession"])) {
-        echo "<li><a href='index.php?action=login'>Déconnexion</a></li>";
-      }else{
-
-        echo "<li><a href='index.php?action=login'>Connexion</a></li>";
-      }
-       ?>
-			<li>test1</li>
-			<li>teskst1</li>
-			<li>cjsk</li>
-			<li>fd</li>
-		</ul>
+			<a href="index.php?action=mesCours">Mes cours</a>
+			<a href="index.php?action=profil">Mon profil</a>
+			<a href="index.php?action=profil">Mes paramètres</a>
+			<a href='index.php?action=login'>Déconnexion</a>
 	</div>
 	<div id="contenu">
 		<?php echo $contenu ?>
