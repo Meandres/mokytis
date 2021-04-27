@@ -13,7 +13,6 @@ function accueil()
 {
     // la tu fais les appels au fonction du modele
     $tabCours = getLastCours();
-    //var_dump($tabCours);
     require('Vue/vueAccueil.php');
 }
 function profil(){
@@ -44,7 +43,7 @@ function listeCours(){
   require("Vue/vueListeCours.php");
 }
 function coursDetails($id){
-  $cours = getCoursId($id);
+  $cours = getCoursSimplesId($id);
   $prof = getProfWithId($cours->getProfesseur());
   require("Vue/vueCoursDetails.php");
 }
@@ -71,7 +70,10 @@ function pageQCM($idCours){
   $qcm = getQCM($idCours);
   require("Vue/vueQCM.php");
 }
-
+function mesCours(){
+  $listeCours = listeMesCours();
+  require("Vue/vueMesCours.php");
+}
 function modifQCM($idCours){
   $questions=getQuestionsReponsesQCM($idCours);
   require("Vue/vueModifQCM.php");
