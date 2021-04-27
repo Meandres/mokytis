@@ -72,6 +72,11 @@ function pageQCM($idCours){
   require("Vue/vueQCM.php");
 }
 
+function modifQCM($idCours){
+  $questions=getQuestionsReponsesQCM($idCours);
+  require("Vue/vueModifQCM.php");
+}
+
 // Connexion de l'utilisateur
 function login(){
   /*si aucune variable session existe, cela signifie que l'utilisateur

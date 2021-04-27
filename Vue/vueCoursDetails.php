@@ -27,6 +27,9 @@ ob_start();
           <a href="index.php?action=ajoutModifCours&idCours=<?php echo $cours->getIdCours();?>">
            <button id="bModif" name="buttonModif">Modifier le cours</button>
          </a>
+         <a href="index.php?action=modifQCM&idCours=<?php echo $cours->getIdCours(); ?>">
+           <button id=btModifQCM name="buttonModifQCM">Modifier le QCM associé</button>
+         </a>
        <?php }else{ ?>
           <a href="index.php?action=qcm&idCours=<?php echo $cours->getIdCours();?>">
             <button id="bQCM" name="buttonQCM"> Faire le test</button>

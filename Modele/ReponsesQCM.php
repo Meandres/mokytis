@@ -12,19 +12,20 @@ class ReponsesQCM{
 	public function getTextReponse(){ return $this->textReponse; }
 
 	public function getEstJuste(){ return $this->estJuste; }
-	
+
+	public function estJuste(){ return $this->estJuste==1;}
 	//set
 	public function setIdReponsesQCM($ID){ $this->idReponsesQCM=$ID; }
-	
+
 	public function setQuestion($Question){ $this->question=$Question; }
-	
+
 	public function setTextReponse($TextReponse){ $this->textReponse=$TextReponse; }
-	
+
 	public function setEstJuste($EstJuste){ $this->estJuste=$EstJuste; }
 
 	//constructeur par défault (peut-être à enlever ?)
 	public function __construct(){}
-	
+
 	//constructeur pour une requete dans la base
 	protected function remplirBD(array $row){
 		$this->idReponsesQCM=$row['idReponsesQCM'];

@@ -3,6 +3,7 @@
   -revoir la gestion des erreurs (peut-être avec des vues spécifiques donc pas dans ce fichier-ci).
 */
 require 'Apprenant.php';
+require 'ReponsesQCM.php';
 require 'conf.php';
 
 /*
@@ -142,6 +143,51 @@ function getQCM($id){
   $qcm = QCM::avecBD($qcm);
   return $qcm;
 }
+
+function insererQuestion($idQCM, $intituleQu, $diff, $r1, $r2, $r3, $r4, $correcte){
+  $dbConn=ouvrirConnexion();
+  $reussi=true;
+  $idQu=$dbConn->query("select MAX(idQuestion) from QUESTIONSQCM;")->fetch()[0];
+  $idQu+=1;
+  $idRe=$dbConn->query("select MAX(idReponsesQCM) from REPONSESQCM;")->fetch()[0];
+  $idRe+=1;
+  $reussi=$reussi & $dbConn->prepare("insert into QUESTIONSQCM VALUES(".$idQu.", ".$idQCM.", '".$diff."', '".$intituleQu."');")->execute();
+  $reponses=array($r1, $r2, $r3, $r4);
+  foreach ($reponses as $key=>$rep) {
+    $vraie=0;
+    if($key==$correcte){ $vraie=1; }
+    $reussi=$reussi & $dbConn->prepare("insert into REPONSESQCM VALUES(".(int)($idRe+$key).", ".$idQu.", '".$rep."', ".$vraie.");")->execute();
+  }
+  return $reussi;
+}
+
+function getQuestionsReponsesQCM($id){
+  $dbConn=ouvrirConnexion();
+  $requete="select * from QUESTIONSQCM where qcm=(select idQCM from QCM where cours=".$id.");";
+  $records=$dbConn->query($requete)->fetchAll();
+  $questions=[];
+  foreach($records as $key => $question){
+    $qr=[];
+    $qr[0]=QuestionsQCM::avecBD($question);
+    $requete="select * from REPONSESQCM where question=".$qr[0]->getIdQuestion().";";
+    $res=$dbConn->query($requete)->fetchAll();
+    foreach($res as $reponse){
+      array_push($qr, ReponsesQCM::avecBD($reponse));
+    }
+    $questions[$key]=$qr;
+  }
+  return $questions;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

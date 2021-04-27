@@ -41,6 +41,9 @@ if (isset($_GET['action'])){
 	else if($_GET['action']=="qcm" && isset($_GET['idCours'])){
 		pageQCM($_GET['idCours']);
 	}
+	else if($_GET['action']=="modifQCM" && isset($_GET['idCours'])){
+		modifQCM($_GET['idCours']);
+	}
 } else {
 	accueil();
 }

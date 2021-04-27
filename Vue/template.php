@@ -79,7 +79,5 @@
 	</footer>
 	</div>
 </body>
-<script src="Javascript/javascript.js"></script>
-
-
+<script src="JavaScript/javascript.js"></script>
 </html>
