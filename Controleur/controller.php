@@ -5,6 +5,7 @@ require('Modele/LoginManager.php');
 require('Modele/Cours.php');
 require('Modele/Matiere.php');
 require('Modele/SujetForum.php');
+require('Modele/ReponseForum.php');
 require('Modele/QCM.php');
 require('Modele/QuestionsQCM.php');
 
