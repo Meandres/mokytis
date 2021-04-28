@@ -11,7 +11,7 @@ class Matiere{
 	}
 
 	public function getIntituleMatiere(){
-		return $this->intituleCours;
+		return $this->intituleMatiere;
 	}
 
 	//set
