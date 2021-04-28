@@ -35,8 +35,8 @@ if (isset($_GET['action'])){
 	else if($_GET['action']== "matiereSujets" && isset($_GET['idMatiere'])){
 		listeSujetsForumByMatiere($_GET['idMatiere']);
 	}
-	else if($_GET['action']== "sujetDetails" && isset($_GET['idSujet'])){
-		sujetDetails($_GET['idSujet']);
+	else if($_GET['action']== "Sujets" && isset($_GET['idSujet'])){
+		listeReponsesBySujet($_GET['idSujet']);
 	}
 	else if($_GET['action']=="qcm" && isset($_GET['idCours'])){
 		pageQCM($_GET['idCours']);
