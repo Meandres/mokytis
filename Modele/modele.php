@@ -138,6 +138,30 @@ function getAllSujetsByMatiere($id){
   }
   return $tabSujetsByMatiere;
 }
+function getAllReponsesBySujet($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from REPONSEFORUM where sujet=".$id.";";
+  $lesReponsesBySujet=$dbConn->query($requete)->fetchAll();
+  $tabReponsesBySujet = [];
+  foreach ($lesReponsesBySujet as $key => $reponse) {
+    $tabReponsesBySujet[] = ReponseForum::avecBD($reponse);
+  }
+  return $tabReponsesBySujet;
+}
+function getSujet($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from SUJETFORUM where idSujetForum=".$id.";";
+  $temp = $dbConn->query($requete)->fetch();
+  $sujet = SujetForum::avecBD($temp);
+  return $sujet;
+}
+function getMatiere($id){
+  $dbConn = ouvrirConnexion();
+  $requete = "select * from MATIERE where idMatiere=".$id.";";
+  $temp = $dbConn->query($requete)->fetch();
+  $matiere = Matiere::avecBD($temp);
+  return $matiere;
+}
 
 // partie quizz
 function getQCM($id){
