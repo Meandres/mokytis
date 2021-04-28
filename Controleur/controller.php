@@ -66,6 +66,15 @@ function listeSujetsForumByMatiere($id){
   require("Vue/vueListeSujetsForum.php");
 }
 
+function listeReponsesBySujet($id){
+  $sujet = getSujet($id);
+  $matiere = getMatiere($sujet->getMatiere());
+  $cours = getCoursId($sujet->getCours());
+  $auteur = getApprenant($sujet->getAuteur());
+  $listeReponsesBySujet = getAllReponsesBySujet($id);
+  require("Vue/vueSujetDetails.php");
+}
+
 function pageQCM($idCours){
   $qcm = getQCM($idCours);
   require("Vue/vueQCM.php");
