@@ -48,7 +48,7 @@ class ReponseForum{
 	}
 
 	public function afficherApperçu(){
-		$affichage = "<a class='reponse'><div class='appercuSujet'><h3>".$this->contenu."</h3>".$this->datePubli."<br> ".$this->auteur."</div></a>";
+		$affichage = "<a class='reponse'><div class='appercuReponse'><h3>".$this->contenu."</h3>".$this->datePubli."<br> ".$this->auteur."</div></a>";
 		return $affichage;
 	}
 
