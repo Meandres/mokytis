@@ -8,18 +8,9 @@
 
 	<meta charset="UTF-8"/>
 	<link rel="stylesheet" href="Style/style.css" media="screen">
+	<link id="active-stylesheet" href="" rel="stylesheet" type="text/css"/>
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-        function changeTheme() {
-            var theme = document.getElementsByTagName('link')[0];
-            if (theme.getAttribute('href') == 'Style/style.css') {
-                theme.setAttribute('href', 'Style/orangeIsTheNewBlack.css');
-            } else {
-                theme.setAttribute('href', 'Style/style.css');
-            }
-        }
-    </script>
 
 	<title><?php $titre ?></title>
 </head>
@@ -67,7 +58,8 @@
 		</div>
 		<div class="themeSelection">
 			choix du style :
-			<button onclick="changeTheme()">Changer le theme</button>
+			<button id="bButton" class="button" data-stylesheet="Style/style.css">Bleu</button>
+			<button id="oButton" class="button" data-stylesheet="Style/orange.css">Orange</button>
 		</div>
 		<div class="footer_links">
 			<a href="index.php?action=contact">Nous contacter</a>
@@ -78,4 +70,5 @@
 	</div>
 </body>
 <script src="JavaScript/javascript.js"></script>
+<script src="JavaScript/changerTheme.js"></script>
 </html>
