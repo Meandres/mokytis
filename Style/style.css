@@ -12,7 +12,9 @@ h1:not(.logo > h1){
 	text-shadow: 1px 2px 2px #64b7f5;
 }
 
-
+h2{
+  color: black;
+}
 
 
 /* partie template du site  */
@@ -343,4 +345,124 @@ html, body {
 .login > button:hover , .login > button:focus{
   border-radius: 30px;
   background-color: white;
+}
+
+#oButton{
+  background-color: orange;
+}
+
+#bButton{
+  background-color: #8fcfffab;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 200, 255, 1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 200, 225, 1);
+}
+
+/*Vue listeMatieresForum*/
+.appercuMatiere {
+  background-color: #8fcfffab;
+	width: 60%;
+	margin: 10px;
+	float: left;
+	border-radius: 1px;
+	border: solid 1px #64b7f5;
+	box-shadow: 2px 2px 5px #64b7f5;
+	padding-left: 80px;
+  transition: background-color 1s;
+}
+
+.appercuMatiere > a {
+	color: white;
+	text-decoration: none;
+}
+
+.appercuMatiere:hover {
+  background-color: rgba(200, 200, 255, 1);
+  box-shadow: 2px 2px 50px #64b7f5;
+}
+/*FIN Vue listeMatieresForum*/
+
+/*Vue ListeSujetsForum*/
+.appercuSujet {
+  background-color: #8fcfffab;
+	width: 60%;
+	margin: 10px;
+	float: left;
+	border-radius: 1px;
+	border: solid 1px #64b7f5;
+	box-shadow: 2px 2px 5px #64b7f5;
+	padding-left: 80px;
+  transition: background-color 1s;
+}
+
+.appercuSujet > a {
+	color: white;
+	text-decoration: none;
+}
+
+.appercuSujet:hover {
+  background-color: rgba(200, 200, 255, 1);
+  box-shadow: 2px 2px 50px #64b7f5;
+}
+/*FIN Vue ListeSujetsForum*/
+
+/*Vue SujetDetails*/
+.appercuReponse {
+	position: relative;
+	background-color: #8fcfffab;
+	width: 60%;
+	margin: 20px;
+	border-radius: 1px;
+	border: solid 1px #64b7f5;
+	box-shadow: 2px 2px 5px #64b7f5;
+	padding-left: 10px;
+}
+
+.appercuReponse > a {
+	color: white;
+	text-decoration: none;
+}
+
+#sujet-container{
+  position: relative;
+	background-color: #6fcfffab;
+	width: 40%;
+	margin: 50px;
+	border-radius: 5px;
+	border: solid 3px #64a2d1;
+	box-shadow: 2px 2px 10px #64b7f5;
+	padding-left: 10px;
+}
+
+p {
+  color: black;
+}
+
+h3 {
+  color: black;
+}
+
+section{
+  color: black;
+  }
+
+div {
+  color: black;
 }
