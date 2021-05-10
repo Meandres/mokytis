@@ -13,11 +13,19 @@ ob_start();
     echo $cours->afficherApperçu();
   } ?>
 </div>
+
+<?php
+if($_SESSION['prof']=1)
+{
+?>
 <div class="createClass-container">
    <form>
 	 <button type="button" id="createClass" onclick=window.location.href='vueAjoutModifCours.php'>Creer un cours</button>
    </form>
 </div>
+<?php
+}
+?>
 <br class="clearBoth" /><!-- you may or may not need this -->
 
 <?php

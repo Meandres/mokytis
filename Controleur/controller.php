@@ -113,6 +113,7 @@ function login(){
     }
   }else{
     unset($_SESSION["newsession"]);
+    unset($_SESSION['prof']);
     header('Location: index.php?action=accueil');
   }
 }
